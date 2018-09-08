@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("String1:");
+		string str1 = Console.ReadLine().ToString().Trim();
+		Console.WriteLine("String2:");
+		string str2 = Console.ReadLine().ToString().Trim();
+		
+		Program p = new Program();
+		bool res = p.permutation(str1, str2);
+		Console.WriteLine("Result: "+ res);
+		
+	}
+	
+	bool permutation(string first, string second){
+		if (first.Length != second.Length)
+        return false;
+    if (first.Length == 0)
+        return false;
+    Dictionary<char, int> countEm = new Dictionary<char, int>(first.Length);
+    foreach (char c in first)
+    {
+        if (countEm.ContainsKey(c))
+            countEm[c]++;
+        else
+            countEm.Add(c, 1);
+    }
+    foreach (char c in second)
+    {
+        if (countEm.ContainsKey(c))
+        {
+            if (countEm[c] == 0)
+                return false;
+            countEm[c]--;
+        }
+        else
+            return false;
+    }
+    return true;
+	}
+}
