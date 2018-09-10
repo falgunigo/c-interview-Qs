@@ -1,0 +1,49 @@
+using System;
+//using System.Collections.Generic;					
+public class Program
+{
+	public static void Main()
+	{
+
+		Console.Write("Enter string, spaces will be replaced");
+		string str = Console.ReadLine().ToString();
+		Console.Write("Length of string");
+		int len = Int32.Parse(Console.ReadLine().ToString());
+		Console.WriteLine("Result");
+		Program p = new Program();
+		p.replacespaces(str,len);
+	}
+	
+	public void replacespaces(string str, int truelen){
+		int index, spacecount = 0, i;
+		char[] strArray = str.ToCharArray();
+		for(i =0 ; i < truelen; i++){
+		if(strArray[i]==' ')
+			spacecount++;
+		}
+		Console.WriteLine("spacecount"+spacecount.ToString());
+		index = truelen + spacecount*2;
+		Array.Resize(ref strArray, index);
+		Console.WriteLine("index"+index.ToString());// replacing each space with 3 chars
+		
+		if (truelen < str.Length) strArray[truelen] = '\0';
+		
+		for(i = truelen -1; i >= 0; i--){
+			//Console.WriteLine("Loop index: "+index.ToString());
+			if(strArray[i] == ' '){
+				//Console.WriteLine("Found space");
+				strArray[index-1] = '0';
+				strArray[index-2] = '2';
+				strArray[index-3] = '%';
+				index = index - 3; //because 3 chars have been occupied
+			}else {
+				strArray[index -1] = strArray[i];
+				index--;
+			}
+		}
+		string s = new String(strArray);
+	Console.WriteLine(s);
+	}
+	
+	
+}
