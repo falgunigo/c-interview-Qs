@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+
+delegate T NumberChanger<T>(T n);
+namespace GenericDelegateAppl {
+   public class TestDelegate {
+      static int num = 10;
+      
+      public static int AddNum(int p) {
+         num += p;
+         return num;
+      }
+      public static int MultNum(int q) {
+         num *= q;
+         return num;
+      }
+      public static int getNum() {
+         return num;
+      }
+      public static void Main(string[] args) {
+         //create delegate instances
+         NumberChanger<int> nc1 = new NumberChanger<int>(AddNum);
+         NumberChanger<int> nc2 = new NumberChanger<int>(MultNum);
+         
+         //calling the methods using the delegate objects
+         nc1(25);
+         Console.WriteLine("Value of Num: {0}", getNum());
+         
+         nc2(5);
+         Console.WriteLine("Value of Num: {0}", getNum());
+      }
+   }
+}
+
+namespace TestTest
+{
+public class Program
+{
+	public static void Main()
+	{
+		MyGenericArray<int> intMGA = new MyGenericArray<int>(4);
+		for(int i=0; i < 4; i++){
+		intMGA.setItem(i,i*2);
+			Console.WriteLine(intMGA.getItem(i));
+		}
+		MyGenericArray<string> strMGA = new MyGenericArray<string>(3);
+		strMGA.setItem(0,"Falguni");
+		strMGA.setItem(1,"loves");
+		strMGA.setItem(2,"Vivek");
+		for(int i=0; i < 4; i++){
+			Console.WriteLine(strMGA.getItem(i));
+		}
+		
+		int a = 0;
+		int b = 34;
+		Program.SwapMe<int>(ref a, ref b);
+		Console.WriteLine("a" + a);
+		Console.WriteLine("b" + b);
+	}
+	static void SwapMe<T>(ref T lhs, ref T rhs)
+{
+		T temp;
+		temp = lhs;
+		lhs = rhs;
+		rhs = temp;
+
+}
+	
+}
+	
+
+
+public class MyGenericArray<T>
+	{
+		private T[] _array;
+		public MyGenericArray(int size)
+		{
+			_array = new T[size +1];
+		}
+		
+		public T getItem(int idx)
+		{
+		return _array[idx];
+		}
+	
+		public void setItem(int idx, T val)
+		{
+			_array[idx] = val;
+		}
+	}
+}
