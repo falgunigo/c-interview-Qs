@@ -8,6 +8,19 @@ namespace GenericDelegateAppl {
 		  Program p = new Program();
 		  p.findProd(arr);
 	  }
+	  //O(n) performance
+	  public void findProd(int[] arr){
+		int prod = 1;
+		int i;
+		for(i = 0; i < arr.Length; i++){
+			if(arr[i] != 0){prod *= arr[i];}
+		}//end of 1st for loop
+		for(i = 0; i < arr.Length; i++){
+			Console.WriteLine(prod/arr[i]);
+		}//end of 2nd for loop
+	}//end findProd method
+	
+	//O(n^2) performance
 	public void findProd(int[] arr){
 		int temp = 1;
 		//int val = 0;
