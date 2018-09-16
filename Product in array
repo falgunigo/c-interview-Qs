@@ -1,0 +1,33 @@
+using System;
+//using System.Collections.Generic;
+
+namespace GenericDelegateAppl {
+	public class Program{
+      public static void Main(string[] args) {
+		  int[] arr = new int[]{1,2,3,4,5,6};
+		  Program p = new Program();
+		  p.findProd(arr);
+	  }
+	public void findProd(int[] arr){
+		int temp = 1;
+		//int val = 0;
+		int i;
+		//int[] tarr = new int[arr.Length];
+		for(i = 0; i< arr.Length; i++){
+			//Console.WriteLine("First loop i "+arr[i]);
+			for(int j = 0; j< arr.Length; j++){
+				Console.WriteLine();
+				if(arr[j] != arr[i])
+				{//Console.WriteLine("2nd loop j "+arr[j]);
+					//Console.Write(arr[j]+"*");
+					temp *= arr[j]; }//end of if loop
+			}//end on second nested for loop
+		 Console.WriteLine(temp);
+		 //tarr[i] = temp;
+		 temp = 1;
+		}//end of first for loop
+	//Printing the result
+	
+	}//end findProd method
+  }//End program class
+}
