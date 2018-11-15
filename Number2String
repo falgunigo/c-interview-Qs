@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+					
+public class Program
+{
+	public static void Main()
+	{
+		var map = new Dictionary<int,Char>();
+		Program p = new Program();
+		for(int i = 1; i<=26; i++){
+			map.Add(i, (Char)(65 + (i - 1)));
+			Console.WriteLine((Char)(65 + (i - 1)));
+		}
+		Console.WriteLine(p.Number2String(2));
+	}
+	private String Number2String(int number)
+	{
+    	Char c = (Char)(97 + (number - 1));
+    	return c.ToString();
+	}
+}
